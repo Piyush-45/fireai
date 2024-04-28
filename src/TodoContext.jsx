@@ -7,6 +7,8 @@ export const TodoContext = createContext();
 export const TodoProvider = ({ children }) => {
   const [todos, setTodos] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
@@ -24,10 +26,14 @@ export const TodoProvider = ({ children }) => {
   }, []);
 
   const handleLogin = () => {
-    // Implement login logic
-    setIsAuthenticated(true);
+    // Implement login logic 
+    if (username === '' || password === '') {
+        alert("field cannot be empty");
+    } else {
+        setIsAuthenticated(true);
+    }
+}
 
-  };
 
   const handleLogout = () => {
     setIsAuthenticated(false);
@@ -65,6 +71,8 @@ export const TodoProvider = ({ children }) => {
     handleUpdateTodo,
     handleDeleteTodo,
     handleSearch,
+    username, setUsername,
+    password, setPassword
   };
 
   return <TodoContext.Provider value={value}>{children}</TodoContext.Provider>;

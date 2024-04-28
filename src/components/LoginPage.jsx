@@ -5,9 +5,8 @@ import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const naviagte = useNavigate()
-  const { handleLogin } = useContext(TodoContext);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const { handleLogin, username,setUsername,password, setPassword} = useContext(TodoContext);
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,7 +15,6 @@ const LoginPage = () => {
     naviagte('/dashboard')
     
   };
-
   return (
     <div>
       <h2>Login</h2>
